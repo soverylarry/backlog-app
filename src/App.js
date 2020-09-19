@@ -7,7 +7,6 @@ import { Link } from "react-router-dom"
 function App() {
   return (
     <div className="demo-big-content">
-      <div style={{height: '300px', position: 'relative'}}>
           <Layout>
               <Header title="Sample Title" className= "header" scroll>
                   <Navigation>
@@ -25,7 +24,6 @@ function App() {
               </Drawer>
               <Content />
           </Layout>
-      </div>
     </div>
   );
 }
