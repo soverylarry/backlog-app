@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content} from "react-mdl"
 import { Link } from "react-router-dom"
@@ -9,21 +8,19 @@ function App() {
   return (
     <div className="demo-big-content">
       <div style={{height: '300px', position: 'relative'}}>
-          <Layout fixedHeader>
-              <Header title={<span><span style={{ color: '#ddd' }}>Area / </span><strong>The Title</strong></span>}>
+          <Layout>
+              <Header title="Sample Title" className= "header" scroll>
                   <Navigation>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
+                      <Link to="/">Home</Link>
+                      <Link to="/movies">Movies</Link>
+                      <Link to="/books">Books</Link>
                   </Navigation>
               </Header>
               <Drawer title="Title">
                   <Navigation>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
-                      <a href="#">Link</a>
+                      <Link to="/">Home</Link>
+                      <Link to="/movies">Movies</Link>
+                      <Link to="/books">Books</Link>
                   </Navigation>
               </Drawer>
               <Content />
