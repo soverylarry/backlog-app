@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const http = require("http");
 
@@ -6,8 +7,6 @@ const PORT = 8080;
 
 // Create a generic function to handle requests and responses
 function handleRequest(request, response) {
-
-  // Send the below string to the client when the user visits the PORT URL
   response.end("It Works!! Path Hit: " + request.url);
 }
 
@@ -15,6 +14,7 @@ function handleRequest(request, response) {
 // Pass the handleRequest function to empower it with functionality.
 const server = http.createServer(handleRequest);
 
+//Establish Mongoose connection
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/backlogdb",
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
@@ -24,5 +24,3 @@ mongoose.connect(
 server.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT);
 });
-
-

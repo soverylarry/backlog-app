@@ -1,5 +1,4 @@
 {
-  "name": "backlog-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +9,7 @@
     "react-dom": "^16.13.1",
     "react-mdl": "^2.1.0",
     "react-scripts": "3.4.3"
+    "express": "^4.17.1"
   },
   "scripts": {
     "start": "react-scripts start",
