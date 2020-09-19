@@ -1,0 +1,22 @@
+{
+  "name": "backlog-app",
+  "version": "1.0.0",
+  "description": "Project 3 MERN Backlog App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KekeliVA/backlog-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KekeliVA/backlog-app/issues"
+  },
+  "homepage": "https://github.com/KekeliVA/backlog-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
