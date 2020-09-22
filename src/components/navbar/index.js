@@ -1,20 +1,16 @@
-import React from 'react';
-import { Header, Navigation} from "react-mdl"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Header, Navigation } from "react-mdl";
+import { Link } from "react-router-dom";
 
-
-function NavBar (props) {
-    <Header title="Sample Title" className= "header" scroll>
-    <Navigation>
+function NavBar(props) {
+  return (
+    <Header title="Sample Title" className="header" scroll>
+      <Navigation>
         <Link to="/">Home</Link>
         <Link to="/movies">Movies</Link>
         <Link to="/books">Books</Link>
-    </Navigation>
+      </Navigation>
     </Header>
-
- return (
-
- )
-
- export default NavBar
+  );
 }
+export default NavBar;
