@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
 import { Layout, Content} from "react-mdl";
-import './src/components/navbar/index.js';
+import NavBar from './components/navbar';
 
 
 function App() {
   return (
     <div className="demo-big-content">
           <Layout>
-              <navbar>
-              </navbar>
+              <NavBar />
               <Content />
           </Layout>
     </div>
