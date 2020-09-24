@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const apiRoutes = require("./routes/apiRoutes");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -18,16 +19,18 @@ mongoose.connect(
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 
-// Define API routes here
-
+//API routes here
+app.use("/api", apiRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
 
+//Temporarily commented out pending a proper build!
 /*app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });*/
 
+//Test page for API debugging
 app.get("/apitest", (req, res) => {
   res.sendFile(path.join(__dirname, "./testing/testapi.html"));
 })
