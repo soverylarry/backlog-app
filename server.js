@@ -3,7 +3,8 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const apiRoutes = require("./routes/apiRoutes");
+const db = require("./models");
+const cors = require('cors')
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +21,25 @@ mongoose.connect(
 );
 
 //API routes here
-app.use("/api", apiRoutes);
+app.get("/api", cors(), (req, res) => {
+  db.Media.find({})
+    .then(dbMedia => {
+      res.json(dbMedia);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+app.post("/api/submit", cors(), ( { body }, res) => {
+  db.Media.create(body)
+    .then(dbMedia => {
+      res.json(dbMedia);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 // Send every other request to the React app
 // Define any API routes before this runs

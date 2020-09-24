@@ -1,4 +1,5 @@
-const db = require("./models");
+const db = require("../models/");
+const express = require("express");
 const app = express();
 
 app.get("/api/all", (req, res) => {

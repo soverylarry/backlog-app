@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   getFullMediaList: function(query) {
-    return axios.get("/api/all");
+    return axios.get("/api");
   },
 
   addMediaToList: function(query) {
