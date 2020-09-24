@@ -1,6 +1,11 @@
 
 const mongoose = require("mongoose");
 const http = require("http");
+const apijs = require("./routes/api");
+const express = require ("express");
+const app = express ();
+
+app.use (apijs);
 
 // Define a port to listen for incoming requests
 const PORT = 8080;
