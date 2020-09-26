@@ -4,7 +4,7 @@ import { Layout, Header, Navigation, Drawer, Content } from "react-mdl"
 import Grid from "react-mdl"
 import Cell from "react-mdl"
 import { Link } from "react-router-dom"
-import MediaCard from "./components/card"
+import MediaCard from "./components/card/card"
 
 
 function App() {
