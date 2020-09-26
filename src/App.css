@@ -39,23 +39,20 @@
 
 .project-cards {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
   transition: 0.3s;
   border-radius: 5px;
   margin: auto;
+  margin-top: 2.5em;
 }
 
-.project-cards:hover {
+.media-cards:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .title-div {
-  float: left;
   border-style: solid;
   border-color: red;
-}
-
-.clearfix {
-  overflow: auto;
 }
 
 .status-div {
