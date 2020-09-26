@@ -8,7 +8,7 @@ export default class MediaCard extends Component {
   
   render() {
     return (
-      <div className="project-cards" style={{width: "50%"}}>
+      <div className="media-cards" style={{width: "50%"}}>
         <div className="title-div">
           <h4>Title: test</h4>
         </div>
