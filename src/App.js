@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content } from "react-mdl"
 import { Link } from "react-router-dom"
+import CreateNewmedia from "./components/createnewmedia"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     </Navigation>
                 </Drawer>
                 <Content />
+                <CreateNewmedia />
             </Layout>
         </div>
     );
