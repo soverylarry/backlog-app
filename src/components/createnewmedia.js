@@ -12,7 +12,7 @@ export default class CreateNewmedia extends Component {
         this.state = {
             newmedia: "",
             type: "",
-            progress: ""
+            status: ""
         }
     }
 
@@ -28,7 +28,7 @@ export default class CreateNewmedia extends Component {
         })
     }
 
-    onChangeProgress(e) {
+    onChangeStatus(e) {
         this.setState({
             progress: e.target.value
         })
@@ -40,7 +40,7 @@ export default class CreateNewmedia extends Component {
         const media = {
             newmedia: this.state.newmedia,
             type: this.state.type,
-            progress: this.state.type
+            status: this.state.status
         }
 
     }
@@ -75,9 +75,9 @@ export default class CreateNewmedia extends Component {
                         <label>Progress</label>
                         <select
                             className="form-control"
-                            value={this.state.progress}
-                            onChange={this.onChangeProgress}>
-                            <option value="needtowatch">Need to Watch</option>
+                            value={this.state.status}
+                            onChange={this.onChangeStatus}>
+                            <option value="notstarted">Not Started</option>
                             <option value="inprogress">In Progress</option>
                             <option value="finished">Finished</option>
                         </select>
