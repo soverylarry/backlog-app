@@ -8,18 +8,17 @@ export default class MediaCard extends Component {
   
   render() {
     return (
-      <div className="project-cards" style={{width: "50%"}}>
+      <div className="media-cards" style={{width: "50%"}}>
         <div className="title-div">
-            <h4>Title</h4>
+          <h1>Title: test</h1>
         </div>
+        
         <div className="status-div">
-
-            <p>Status</p>
+          <h4>Status: test</h4>
         </div>
 
         <div className="type-div">
-            <p>Type</p>
-
+          <h4>Type: test</h4>
         </div>
             <input placeholder="comment"></input>
       </div>
