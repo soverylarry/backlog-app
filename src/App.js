@@ -9,7 +9,7 @@ import API from "./utils/API";
 //import CreateNewMedia from "./components/createnewmedia";
 
 function App() {
-  const [mediaList, setMediaList] = useState([]);
+    const [mediaList, setMediaList] = useState([]);
 
     const getFullMediaList = () => {
       API.getFullMediaList()
