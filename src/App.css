@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.media-cards {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 2.5em;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.media-cards:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.title-div {
+  border-style: solid;
+  border-color: red;
+}
+
+.status-div {
+  border-style: solid;
+  border-color: black;
+}
+
+.type-div {
+  border-style: solid;
+  border-color: cyan;
+}
+
+/* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
