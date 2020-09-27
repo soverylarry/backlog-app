@@ -60,7 +60,6 @@ export default class CreateNewmedia extends Component {
     render() {
         return (
             <div>
-                <h3>Add New Media</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Media</label>
@@ -101,7 +100,7 @@ export default class CreateNewmedia extends Component {
 
                     <div>
                         <div className="form-group">
-                            <input type="submit" value="Create New Media" className="btn btn-primary" />
+                            <input type="submit" value="Create New Media" className="button" />
                         </div>
                     </div>
                 </form>
