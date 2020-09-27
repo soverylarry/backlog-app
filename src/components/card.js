@@ -10,7 +10,7 @@ export default class MediaCard extends Component {
     return (
       <div className="media-cards" style={{width: "50%"}}>
         <div className="title-div">
-          <h4>Title: test</h4>
+          <h1>Title: test</h1>
         </div>
         
         <div className="status-div">

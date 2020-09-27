@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content } from "react-mdl"
 import Grid from "react-mdl"
@@ -6,6 +6,7 @@ import Cell from "react-mdl"
 import { Link } from "react-router-dom"
 import MediaCard from "./components/card"
 import API from "./utils/API";
+
 //import CreateNewmedia from "./components/createnewmedia";
 
 function App() {
@@ -39,7 +40,9 @@ function App() {
                       <Link to="/books">Books</Link>
                   </Navigation>
                </Drawer>
-              <Content />
+              <Content>
+                <MediaCard />
+              </Content>
     {/* <CreateNewmedia /> */}
           </Layout>
     </div>
