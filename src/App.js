@@ -48,7 +48,7 @@ function App() {
             </Drawer>
             <Content>
               {mediaList.map(media => (
-                <MediaCard />
+                <MediaCard title={media.title} status={media.status} type={(media.type)} date={media.date} />
               ))}
             </Content>
             {/* <CreateNewMedia /> */}
