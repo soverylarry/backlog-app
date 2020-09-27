@@ -37,25 +37,24 @@
   }
 }
 
-.project-cards {
+.media-cards {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
   transition: 0.3s;
   border-radius: 5px;
   margin: auto;
+  margin-top: 2.5em;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.project-cards:hover {
+.media-cards:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .title-div {
-  float: left;
   border-style: solid;
   border-color: red;
-}
-
-.clearfix {
-  overflow: auto;
 }
 
 .status-div {
@@ -67,3 +66,5 @@
   border-style: solid;
   border-color: cyan;
 }
+
+/* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
