@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import API from "../utils/API"
+import API from "../utils/API";
+import axios from "../utils/API";
 
 export default class CreateNewmedia extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export default class CreateNewmedia extends Component {
             media: [],
             newmedia: "",
             type: "books",
-            status: "notstarted"
+            status: "Not Started"
         })
     }
     onChangeNewmedia(e) {
@@ -79,6 +80,8 @@ export default class CreateNewmedia extends Component {
                             <option value="books">Books</option>
                             <option value="movies">Movies</option>
                             <option value="games">Games</option>
+                            <option value="show">Show</option>
+                            <option value="album">Album</option>
                         </select>
 
                     </div>
@@ -88,9 +91,10 @@ export default class CreateNewmedia extends Component {
                             className="form-control"
                             value={this.state.status}
                             onChange={this.onChangeStatus}>
-                            <option value="notstarted">Not Started</option>
-                            <option value="inprogress">In Progress</option>
-                            <option value="finished">Finished</option>
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Finished">Finished</option>
+                            <option value="Unowned">Unowned</option>
                         </select>
                     </div>
 
