@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-date-picker';
-import "react-datepicker/dist/react-datepicker.css";
 import API from "../utils/API"
 
 export default class CreateNewmedia extends Component {
     constructor(props) {
-        super(props);
+        super();
 
         this.onChangeNewmedia = this.onChangeNewmedia.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             newmedia: "",
             type: "",
             status: "",
-            date: new Date(),
             media: []
         }
     }
@@ -25,7 +21,9 @@ export default class CreateNewmedia extends Component {
     componentDidMount() {
         this.setState({
             media: [],
-            newmedia: 'test'
+            newmedia: "",
+            type: "books",
+            status: "notstarted"
         })
     }
     onChangeNewmedia(e) {
@@ -42,14 +40,8 @@ export default class CreateNewmedia extends Component {
 
     onChangeStatus(e) {
         this.setState({
-            progress: e.target.value
+            status: e.target.value
         })
-    }
-
-    onChangeDate(date) {
-        this.setState({
-            date: date
-        });
     }
 
     onSubmit(e) {
@@ -59,11 +51,9 @@ export default class CreateNewmedia extends Component {
             newmedia: this.state.newmedia,
             type: this.state.type,
             status: this.state.status,
-            date: this.state.date
         }
         console.log(media);
 
-        window.location = '/';
     }
 
     render() {
@@ -88,7 +78,7 @@ export default class CreateNewmedia extends Component {
                             onChange={this.onChangeType}>
                             <option value="books">Books</option>
                             <option value="movies">Movies</option>
-                            <option value="books">Other Media</option>
+                            <option value="games">Games</option>
                         </select>
 
                     </div>
@@ -104,15 +94,6 @@ export default class CreateNewmedia extends Component {
                         </select>
                     </div>
 
-                    <div className="form-group">
-                        <label>Date</label>
-                        <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                            />
-                        </div>
-                    </div>
 
                     <div>
                         <div className="form-group">
