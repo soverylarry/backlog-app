@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content } from "react-mdl"
 import { Link } from "react-router-dom"
@@ -6,7 +6,7 @@ import API from "./utils/API";
 import CreateNewmedia from "./components/createnewmedia";
 
 function App() {
-  const [mediaList, setMediaList] = useState([]);
+    const [mediaList, setMediaList] = useState([]);
 
     const getFullMediaList = event => {
         API.getFullMediaList()
@@ -19,28 +19,28 @@ function App() {
         API.addMediaToList()
     }*/
 
-  return (
-    <div className="demo-big-content">
-          <Layout>
-              <Header title="Sample Title" className= "header" scroll>
-                  <Navigation>
-                      <Link to="/">Home</Link>
-                      <Link to="/movies">Movies</Link>
-                      <Link to="/books">Books</Link>
-                  </Navigation>
-              </Header>
-              <Drawer title="Title">
-                  <Navigation>
-                      <Link to="/">Home</Link>
-                      <Link to="/movies">Movies</Link>
-                      <Link to="/books">Books</Link>
-                  </Navigation>
-               </Drawer>
-              <Content />
-              <CreateNewmedia />
-          </Layout>
-    </div>
-  );
+    return (
+        <div className="demo-big-content">
+            <Layout>
+                <Header title="Sample Title" className="header" scroll>
+                    <Navigation>
+                        <Link to="/">Home</Link>
+                        <Link to="/movies">Movies</Link>
+                        <Link to="/books">Books</Link>
+                    </Navigation>
+                </Header>
+                <Drawer title="Title">
+                    <Navigation>
+                        <Link to="/">Home</Link>
+                        <Link to="/movies">Movies</Link>
+                        <Link to="/books">Books</Link>
+                    </Navigation>
+                </Drawer>
+                <Content />
+                <CreateNewmedia />
+            </Layout>
+        </div>
+    );
 }
 
 export default App;
