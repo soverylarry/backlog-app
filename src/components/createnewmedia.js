@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-date-picker';
+import "react-datepicker/dist/react-datepicker.css";
+import API from "../utils/API"
 
 export default class CreateNewmedia extends Component {
     constructor(props) {
@@ -6,16 +9,25 @@ export default class CreateNewmedia extends Component {
 
         this.onChangeNewmedia = this.onChangeNewmedia.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
-        this.onChangeProgress = this.onChangeProgress.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
+        this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             newmedia: "",
             type: "",
-            status: ""
+            status: "",
+            date: new Date(),
+            media: []
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            media: [],
+            newmedia: 'test'
+        })
+    }
     onChangeNewmedia(e) {
         this.setState({
             newmedia: e.target.value
@@ -34,15 +46,24 @@ export default class CreateNewmedia extends Component {
         })
     }
 
+    onChangeDate(date) {
+        this.setState({
+            date: date
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
         const media = {
             newmedia: this.state.newmedia,
             type: this.state.type,
-            status: this.state.status
+            status: this.state.status,
+            date: this.state.date
         }
+        console.log(media);
 
+        window.location = '/';
     }
 
     render() {
@@ -81,10 +102,22 @@ export default class CreateNewmedia extends Component {
                             <option value="inprogress">In Progress</option>
                             <option value="finished">Finished</option>
                         </select>
-
                     </div>
+
                     <div className="form-group">
-                        <input type="submit" value="Create New Media" className="btn btn-primary" />
+                        <label>Date</label>
+                        <div>
+                            <DatePicker
+                                selected={this.state.date}
+                                onChange={this.onChangeDate}
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="form-group">
+                            <input type="submit" value="Create New Media" className="btn btn-primary" />
+                        </div>
                     </div>
                 </form>
             </div>
