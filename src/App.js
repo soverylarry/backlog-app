@@ -6,16 +6,23 @@ import Cell from "react-mdl";
 import { Link } from "react-router-dom";
 import MediaCard from "./components/card";
 import API from "./utils/API";
-// import CreateNewmedia from "./components/createnewmedia";
+//import CreateNewMedia from "./components/createnewmedia";
 
 function App() {
   const [mediaList, setMediaList] = useState([]);
 
-    const getFullMediaList = event => {
-        API.getFullMediaList()
-            // .then(res => setMediaList(res.data))
-            .catch(err => console.log(err));
+    const getFullMediaList = () => {
+      API.getFullMediaList()
+        .then(res => setMediaList(res.data))
+        .catch(err => console.log(err));
     }
+
+    getFullMediaList();
+    console.log(mediaList);
+
+    /*const printMediaList = (array) => {
+      
+    }*/
 
     //POST route
     /*const addMediaToList = event => {
@@ -25,22 +32,26 @@ function App() {
   return (
     <div className="demo-big-content">
           <Layout>
-              <Header title="Sample Title" className= "header" scroll>
-                  <Navigation>
-                      <Link to="/">Home</Link>
-                      <Link to="/movies">Movies</Link>
-                      <Link to="/books">Books</Link>
-                  </Navigation>
-              </Header>
-              <Drawer title="Title">
-                  <Navigation>
-                      <Link to="/">Home</Link>
-                      <Link to="/movies">Movies</Link>
-                      <Link to="/books">Books</Link>
-                  </Navigation>
-               </Drawer>
-              <Content />
-    {/* <CreateNewmedia /> */}
+            <Header title="Sample Title" className= "header" scroll>
+              <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/movies">Movies</Link>
+                <Link to="/books">Books</Link>
+              </Navigation>
+            </Header>
+            <Drawer title="Title">
+              <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/movies">Movies</Link>
+                <Link to="/books">Books</Link>
+              </Navigation>
+            </Drawer>
+            <Content>
+              {mediaList.map(media => (
+                <MediaCard />
+              ))}
+            </Content>
+            {/* <CreateNewMedia /> */}
           </Layout>
     </div>
   );
