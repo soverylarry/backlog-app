@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import API from "../utils/API";
-import axios from "../utils/API";
 
 export default class CreateNewmedia extends Component {
     constructor(props) {
         super();
-
         this.onChangeNewmedia = this.onChangeNewmedia.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
@@ -15,15 +13,22 @@ export default class CreateNewmedia extends Component {
             newmedia: "",
             type: "",
             status: "",
-            media: []
+            media: [],
         }
+    }
+
+    getFullMediaList = () => {
+      console.log("Ding???????");
+      API.getFullMediaList()
+        .then(res => this.setState({mediaList: res.data}))
+        .catch(err => console.log(err));
     }
 
     componentDidMount() {
         this.setState({
             media: [],
             newmedia: "",
-            type: "books",
+            type: "book",
             status: "Not Started"
         })
     }
@@ -46,16 +51,19 @@ export default class CreateNewmedia extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
+        //e.preventDefault();
 
         const media = {
             title: this.state.newmedia,
             type: this.state.type,
             status: this.state.status,
+            date: new Date(Date.now())
         }
 
         console.log(media);
-        this.props.refresh();
+        API.addMediaToList(media)
+          .then(res => console.log(res.data))
+          .catch(err => console.log(err))
     }
 
     render() {
@@ -77,9 +85,9 @@ export default class CreateNewmedia extends Component {
                             className="form-control"
                             value={this.state.type}
                             onChange={this.onChangeType}>
-                            <option value="books">Books</option>
-                            <option value="movies">Movies</option>
-                            <option value="games">Games</option>
+                            <option value="book">Book</option>
+                            <option value="movie">Movie</option>
+                            <option value="game">Game</option>
                             <option value="show">Show</option>
                             <option value="album">Album</option>
                         </select>

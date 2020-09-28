@@ -16,7 +16,7 @@ class App extends React.Component {
     mediaList: []
   };
   
-  getFullMediaList = event => {
+  getFullMediaList = () => {
     API.getFullMediaList()
       .then(res => this.setState({mediaList: res.data}))
       .catch(err => console.log(err));
@@ -49,11 +49,11 @@ class App extends React.Component {
                 </Navigation>
               </Drawer>
               <Content>
+                <CreateNewMedia mainApp={this} />
                 {this.state.mediaList.map(media => (
                   <MediaCard title={media.title} status={media.status} type={media.type} date={media.date} />
                 ))}
               </Content>
-              <CreateNewMedia />
             </Layout>
       </div>
     )
