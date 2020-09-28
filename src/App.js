@@ -31,28 +31,28 @@ function App() {
 
   return (
     <div className="demo-big-content">
-      <Layout>
-        <Header title="Sample Title" className="header" scroll>
-          <Navigation>
-            <Link to="/">Home</Link>
-            <Link to="/movies">Movies</Link>
-            <Link to="/books">Books</Link>
-          </Navigation>
-        </Header>
-        <Drawer title="Title">
-          <Navigation>
-            <Link to="/">Home</Link>
-            <Link to="/movies">Movies</Link>
-            <Link to="/books">Books</Link>
-          </Navigation>
-        </Drawer>
-        <Content>
-          {mediaList.map(media => (
-            <MediaCard />
-          ))}
-        </Content>
-        <CreateNewMedia />
-      </Layout>
+          <Layout>
+            <Header title="Sample Title" className= "header" scroll>
+              <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/movies">Movies</Link>
+                <Link to="/books">Books</Link>
+              </Navigation>
+            </Header>
+            <Drawer title="Title">
+              <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/movies">Movies</Link>
+                <Link to="/books">Books</Link>
+              </Navigation>
+            </Drawer>
+            <Content>
+              {mediaList.map(media => (
+                <MediaCard title={media.title} status={media.status} type={(media.type)} date={media.date} />
+              ))}
+            </Content>
+            {/* <CreateNewMedia /> */}
+          </Layout>
     </div>
   );
 }
