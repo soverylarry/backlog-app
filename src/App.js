@@ -26,7 +26,7 @@ class App extends React.Component {
 
   getFullMediaList = () => {
     API.getFullMediaList()
-      .then(res => this.setState({mediaList: res.data}))
+      .then(res => this.setState({ mediaList: res.data }))
       .catch(err => console.log(err));
   }
 
