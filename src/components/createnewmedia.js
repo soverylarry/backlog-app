@@ -55,7 +55,6 @@ export default class CreateNewmedia extends Component {
         }
 
         console.log(media);
-        this.props.refresh();
     }
 
     render() {
