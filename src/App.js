@@ -8,53 +8,51 @@ import MediaCard from "./components/card"
 import API from "./utils/API";
 import CreateNewMedia from "./components/createnewmedia";
 
-function App() {
-  const [mediaList, setMediaList] = useState([]);
-
-  const getFullMediaList = () => {
+class App extends React.Component {
+  state = {
+    mediaList: []
+  };
+  
+  getFullMediaList = event => {
     API.getFullMediaList()
-      .then(res => setMediaList(res.data))
+      .then(res => this.setState({mediaList: res.data}))
       .catch(err => console.log(err));
   }
 
-  getFullMediaList();
-  console.log(mediaList);
+  componentDidMount() {
+    API.getFullMediaList()
+      .then(res => this.setState({mediaList: res.data}))
+      .catch(err => console.log(err));
+  };
 
-  /*const printMediaList = (array) => {
-    
-  }*/
-
-  //POST route
-  /*const addMediaToList = event => {
-      API.addMediaToList()
-  }*/
-
-  return (
-    <div className="demo-big-content">
-          <Layout>
-            <Header title="Sample Title" className= "header" scroll>
-              <Navigation>
-                <Link to="/">Home</Link>
-                <Link to="/movies">Movies</Link>
-                <Link to="/books">Books</Link>
-              </Navigation>
-            </Header>
-            <Drawer title="Title">
-              <Navigation>
-                <Link to="/">Home</Link>
-                <Link to="/movies">Movies</Link>
-                <Link to="/books">Books</Link>
-              </Navigation>
-            </Drawer>
-            <Content>
-              {mediaList.map(media => (
-                <MediaCard title={media.title} status={media.status} type={(media.type)} date={media.date} />
-              ))}
-            </Content>
-            <CreateNewMedia />
-          </Layout>
-    </div>
-  );
+  render() {
+    return (
+      <div className="demo-big-content">
+            <Layout>
+              <Header title="Sample Title" className= "header" scroll>
+                <Navigation>
+                  <Link to="/">Home</Link>
+                  <Link to="/movies">Movies</Link>
+                  <Link to="/books">Books</Link>
+                </Navigation>
+              </Header>
+              <Drawer title="Title">
+                <Navigation>
+                  <Link to="/">Home</Link>
+                  <Link to="/movies">Movies</Link>
+                  <Link to="/books">Books</Link>
+                </Navigation>
+              </Drawer>
+              <Content>
+                {this.state.mediaList.map(media => (
+                  <MediaCard title={media.title} status={media.status} type={media.type} date={media.date} />
+                ))}
+              </Content>
+              <CreateNewMedia />
+            </Layout>
+      </div>
+    )
+  }
 }
 
 export default App; 

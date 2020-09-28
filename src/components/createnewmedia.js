@@ -49,12 +49,13 @@ export default class CreateNewmedia extends Component {
         e.preventDefault();
 
         const media = {
-            newmedia: this.state.newmedia,
+            title: this.state.newmedia,
             type: this.state.type,
             status: this.state.status,
         }
-        console.log(media);
 
+        console.log(media);
+        this.props.refresh();
     }
 
     render() {
