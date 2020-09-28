@@ -32,6 +32,25 @@ app.get("/api", cors(), (req, res) => {
     });
 });
 
+app.put("/api/submit/:id", cors(), (req, res) => {
+  db.Media.update({
+    _id: mongojs.ObjectId(req.params.id)
+  }, {
+    $set: {
+      title: req.body.params.title,
+      status: req.body.params.status,
+      type: req.body.params.type,
+      date: req.body.params.date 
+    }
+  }).then(dbMedia => {
+    res.send(dbMedia);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
+
+
 app.post("/api/submit", cors(), (req, res) => {
   db.Media.create({
     title: req.body.params.title,
