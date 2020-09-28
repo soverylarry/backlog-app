@@ -4,11 +4,12 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
-const cors = require('cors')
+const cors = require("cors");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -31,15 +32,22 @@ app.get("/api", cors(), (req, res) => {
     });
 });
 
-app.post("/api/submit", cors(), ( { body }, res) => {
-  db.Media.create(body)
+app.post("/api/submit", cors(), (req, res) => {
+  db.Media.create({
+    title: req.body.params.title,
+    status: req.body.params.status,
+    type: req.body.params.type,
+    date: req.body.params.date
+  })
     .then(dbMedia => {
-      res.json(dbMedia);
+      res.send(dbMedia);
     })
     .catch(err => {
       res.json(err);
     });
 });
+
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
