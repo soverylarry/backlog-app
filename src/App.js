@@ -8,17 +8,22 @@ import MediaCard from "./components/card"
 import API from "./utils/API";
 import CreateNewMedia from "./components/createnewmedia";
 
+
+
 function App() {
   const [mediaList, setMediaList] = useState([]);
-
+  
   const getFullMediaList = () => {
     API.getFullMediaList()
       .then(res => setMediaList(res.data))
       .catch(err => console.log(err));
+      
+     
   }
 
   getFullMediaList();
-  console.log(mediaList);
+  
+  // console.log(mediaList);
 
   /*const printMediaList = (array) => {
     
