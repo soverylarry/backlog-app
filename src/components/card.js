@@ -38,7 +38,7 @@ export default class MediaCard extends Component {
     console.log(media_type);
 
     return (
-      <div className="media-cards" style={{ width: "50%" }}>
+      <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
         <div className="title-div">
           <a>{this.props.title}</a>
         </div>
