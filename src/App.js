@@ -6,28 +6,28 @@ import Cell from "react-mdl"
 import { Link } from "react-router-dom"
 import MediaCard from "./components/card"
 import API from "./utils/API";
-//import CreateNewMedia from "./components/createnewmedia";
+import CreateNewMedia from "./components/createnewmedia";
 
 function App() {
-    const [mediaList, setMediaList] = useState([]);
+  const [mediaList, setMediaList] = useState([]);
 
-    const getFullMediaList = () => {
-      API.getFullMediaList()
-        .then(res => setMediaList(res.data))
-        .catch(err => console.log(err));
-    }
+  const getFullMediaList = () => {
+    API.getFullMediaList()
+      .then(res => setMediaList(res.data))
+      .catch(err => console.log(err));
+  }
 
-    getFullMediaList();
-    console.log(mediaList);
+  getFullMediaList();
+  console.log(mediaList);
 
-    /*const printMediaList = (array) => {
-      
-    }*/
+  /*const printMediaList = (array) => {
+    
+  }*/
 
-    //POST route
-    /*const addMediaToList = event => {
-        API.addMediaToList()
-    }*/
+  //POST route
+  /*const addMediaToList = event => {
+      API.addMediaToList()
+  }*/
 
   return (
     <div className="demo-big-content">
@@ -51,7 +51,7 @@ function App() {
                 <MediaCard title={media.title} status={media.status} type={(media.type)} date={media.date} />
               ))}
             </Content>
-            {/* <CreateNewMedia /> */}
+            <CreateNewMedia />
           </Layout>
     </div>
   );

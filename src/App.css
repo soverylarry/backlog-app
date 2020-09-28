@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap");
+
 .App {
   text-align: center;
 }
@@ -65,6 +67,85 @@
 .type-div {
   border-style: solid;
   border-color: cyan;
+}
+
+* {
+  font-family: "Saira Semi Condensed", sans-serif;
+  transition: all 0.5s ease;
+}
+
+body {
+  background: #dfdfdf;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+form div, form label, form input, form select, form textarea {
+  width: 100%;
+}
+
+.field:nth-of-type(2) {
+  margin: 16px 0;
+}
+
+label, input, textarea {
+  padding: 8px;
+}
+
+label, [placeholder] {
+  color: #555;
+}
+
+label i {
+  margin: 0 10px 0 0;
+}
+
+.field:focus-within label {
+  color: #000;
+  letter-spacing: 2px;
+}
+
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 6px -6px #555;
+}
+input:focus, textarea:focus {
+  background: white;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
+}
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+.button {
+  background-color:yellow;
+  margin: 16px 0 50px 0;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 6px -6px #555;
+}
+button:hover {
+  letter-spacing: 2px;
+  box-shadow: none;
+}
+
+
+@media (max-width: 425px) {
+  form {
+    width: 100%;
+  }
 }
 
 /* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
