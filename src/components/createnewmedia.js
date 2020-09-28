@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-date-picker';
-import "react-datepicker/dist/react-datepicker.css";
-import API from "../utils/API"
+import API from "../utils/API";
+import axios from "../utils/API";
 
 export default class CreateNewmedia extends Component {
     constructor(props) {
-        super(props);
+        super();
 
         this.onChangeNewmedia = this.onChangeNewmedia.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             newmedia: "",
             type: "",
             status: "",
-            date: new Date(),
             media: []
         }
     }
@@ -25,7 +22,9 @@ export default class CreateNewmedia extends Component {
     componentDidMount() {
         this.setState({
             media: [],
-            newmedia: 'test'
+            newmedia: "",
+            type: "books",
+            status: "Not Started"
         })
     }
     onChangeNewmedia(e) {
@@ -42,14 +41,8 @@ export default class CreateNewmedia extends Component {
 
     onChangeStatus(e) {
         this.setState({
-            progress: e.target.value
+            status: e.target.value
         })
-    }
-
-    onChangeDate(date) {
-        this.setState({
-            date: date
-        });
     }
 
     onSubmit(e) {
@@ -59,17 +52,14 @@ export default class CreateNewmedia extends Component {
             newmedia: this.state.newmedia,
             type: this.state.type,
             status: this.state.status,
-            date: this.state.date
         }
         console.log(media);
 
-        window.location = '/';
     }
 
     render() {
         return (
             <div>
-                <h3>Add New Media</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Media</label>
@@ -88,7 +78,9 @@ export default class CreateNewmedia extends Component {
                             onChange={this.onChangeType}>
                             <option value="books">Books</option>
                             <option value="movies">Movies</option>
-                            <option value="books">Other Media</option>
+                            <option value="games">Games</option>
+                            <option value="show">Show</option>
+                            <option value="album">Album</option>
                         </select>
 
                     </div>
@@ -98,25 +90,17 @@ export default class CreateNewmedia extends Component {
                             className="form-control"
                             value={this.state.status}
                             onChange={this.onChangeStatus}>
-                            <option value="notstarted">Not Started</option>
-                            <option value="inprogress">In Progress</option>
-                            <option value="finished">Finished</option>
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Finished">Finished</option>
+                            <option value="Unowned">Unowned</option>
                         </select>
                     </div>
 
-                    <div className="form-group">
-                        <label>Date</label>
-                        <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                            />
-                        </div>
-                    </div>
 
                     <div>
                         <div className="form-group">
-                            <input type="submit" value="Create New Media" className="btn btn-primary" />
+                            <input type="submit" value="Create New Media" className="button" />
                         </div>
                     </div>
                 </form>

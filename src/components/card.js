@@ -10,15 +10,15 @@ export default class MediaCard extends Component {
     return (
       <div className="media-cards" style={{width: "50%"}}>
         <div className="title-div">
-          <h1>Title: test</h1>
+            <h4>{this.props.title}</h4>
         </div>
         
         <div className="status-div">
-          <h4>Status: test</h4>
+            <p>Status: {this.props.status}</p>
         </div>
 
         <div className="type-div">
-          <h4>Type: test</h4>
+            <p>Type: {this.props.type}</p>
         </div>
             <input placeholder="comment"></input>
       </div>
