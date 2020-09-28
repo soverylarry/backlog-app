@@ -51,7 +51,7 @@ function App() {
                 <MediaCard title={media.title} status={media.status} type={(media.type)} date={media.date} />
               ))}
             </Content>
-            {/* <CreateNewMedia /> */}
+            <CreateNewMedia />
           </Layout>
     </div>
   );
