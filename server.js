@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
 const cors = require("cors");
+const mongojs = require("mongojs");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -37,10 +38,10 @@ app.put("/api/submit/:id", cors(), (req, res) => {
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      title: req.body.params.title,
-      status: req.body.params.status,
-      type: req.body.params.type,
-      date: req.body.params.date 
+      title: req.params.body.title,
+      status: req.params.body.status,
+      type: req.params.body.type,
+      date: req.params.body.date 
     }
   }).then(dbMedia => {
     res.send(dbMedia);
