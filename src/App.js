@@ -7,6 +7,9 @@ import { Link } from "react-router-dom"
 import MediaCard from "./components/card"
 import API from "./utils/API";
 import CreateNewMedia from "./components/createnewmedia";
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { faBook, faFilm, faGamepad, faMusic, faTv } from "@fortawesome/free-solid-svg-icons"
 
 class App extends React.Component {
   state = {
