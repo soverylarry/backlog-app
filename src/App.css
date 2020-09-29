@@ -172,7 +172,7 @@ input.comment{
   float: right;
   margin: 3%;
 }
-.newmedia{}
+/*.newmedia{} */
 /* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
 
 .comment-form {
