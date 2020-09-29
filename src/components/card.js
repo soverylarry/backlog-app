@@ -3,6 +3,7 @@ import Moment from "react-moment"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBook, faFilm, faGamepad, faMusic, faTv } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import API from "../utils/API"
 
 
 
@@ -11,6 +12,33 @@ export default class MediaCard extends Component {
     super()
     // works as expected, returns an object from the db
     console.log(props);
+  }
+
+  state = {
+    status: ""
+  }
+
+  componentDidMount() {
+    this.setState({
+      status: this.props.status
+    })
+  }
+
+  onChangeStatus = (event) => {
+    console.log(event.target.value);
+    console.log(event.target.id);
+
+    const update = {
+      status: event.target.value
+    }
+
+    API.updateMedia(event.target.id, update)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+
+    this.setState({
+      status: event.target.value
+    })
   }
 
   render() {
@@ -44,7 +72,17 @@ export default class MediaCard extends Component {
         </div>
 
         <div className="status-div">
-          <p>Status: {this.props.status}</p>
+        <label>Status: </label>
+          <select
+            className="form-control"
+            value={this.state.status}
+            onChange={this.onChangeStatus}
+            id={this.props.mongoid}>
+            <option value="Unowned">Unowned</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Finished">Finished</option>
+          </select>
         </div>
 
         <div className="type-div">
@@ -55,7 +93,7 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
-        <input className="comment" placeholder="comment"></input>
+        {/* <input className="comment" placeholder="comment"></input> */}
       </div>
     )
   }
