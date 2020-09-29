@@ -122,15 +122,11 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
-<<<<<<< HEAD
-        <input className="comment" placeholder="comment"></input>
-=======
         
         <form id={this.props.id} onSubmit={this.handleSubmit}>
           <input className="comment" value={this.state.comment} onChange={this.handleChange} placeholder="comment"></input> 
           <input type="submit" value="submit" />
         </form>
->>>>>>> 4cfa4b2d5f6c93eef2103c64b827722f464d60a3
       </div>
     )
   }
