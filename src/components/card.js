@@ -7,20 +7,26 @@ import API from "../utils/API"
 
 
 
+
 export default class MediaCard extends Component {
   constructor(props) {
     super()
     // works as expected, returns an object from the db
     console.log(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   state = {
-    status: ""
+    status: "",
+    comment: ""
   }
 
   componentDidMount() {
     this.setState({
-      status: this.props.status
+      status: this.props.status,
+      comment: this.props.comment
     })
   }
 
@@ -38,6 +44,27 @@ export default class MediaCard extends Component {
 
     this.setState({
       status: event.target.value
+    })
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  // when the submit button is clicked, send the data to the back end
+  // the response 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("a comment was submitted: " + this.state.value);
+    const comment = {
+      comment: event.target.value
+    }
+    API.addComment(event.target.id, comment)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+
+    this.setState({
+      comment: event.target.value
     })
   }
 
@@ -64,6 +91,8 @@ export default class MediaCard extends Component {
     // for 9/28/20 test: hard code fontawesome icon names to see if they're valid
     media_type = icons[this.props.type]
     console.log(media_type);
+
+
 
     return (
       <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
@@ -93,7 +122,15 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
+<<<<<<< HEAD
         <input className="comment" placeholder="comment"></input>
+=======
+        
+        <form id={this.props.id} onSubmit={this.handleSubmit}>
+          <input className="comment" value={this.state.comment} onChange={this.handleChange} placeholder="comment"></input> 
+          <input type="submit" value="submit" />
+        </form>
+>>>>>>> 4cfa4b2d5f6c93eef2103c64b827722f464d60a3
       </div>
     )
   }
