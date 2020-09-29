@@ -76,7 +76,7 @@ class App extends React.Component {
             <CreateNewMedia mainApp={this} />
             <div className="medialist-map">
             {this.state.mediaList.map(media => (
-              <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} />
+              <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} comment={media.comment} />
             ))}
             </div>
           </Content>

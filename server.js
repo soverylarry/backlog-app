@@ -33,15 +33,12 @@ app.get("/api", cors(), (req, res) => {
     });
 });
 
-app.put("/api/submit/:id", cors(), (req, res) => {
+app.put("/api/submit/:id/:status", cors(), (req, res) => {
   db.Media.update({
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      title: req.params.body.title,
-      status: req.params.body.status,
-      type: req.params.body.type,
-      date: req.params.body.date 
+      status: req.params.status,
     }
   }).then(dbMedia => {
     res.send(dbMedia);
@@ -51,14 +48,13 @@ app.put("/api/submit/:id", cors(), (req, res) => {
   });
 });
 
-app.put("/api/comment/:id", cors(), (req, res) => {
-  console.log("the req.params.id " + req.params.id);
-  console.log("the req.params.body.comment " + req.params.body.comment);
+app.put("/api/comment/:id/:comment", cors(), (req, res) => {
+  console.log("req.params: " + JSON.stringify(req.params));
   db.Media.update({
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      comment: req.params.body.comment 
+      comment: req.params.comment 
     }
   }).then(dbMedia => {
     res.send(dbMedia);

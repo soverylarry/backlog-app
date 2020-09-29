@@ -34,9 +34,7 @@ export default class MediaCard extends Component {
     console.log(event.target.value);
     console.log(event.target.id);
 
-    const update = {
-      status: event.target.value
-    }
+    let update = event.target.value;
 
     API.updateMedia(event.target.id, update)
       .then(res => console.log(res.data))
@@ -48,21 +46,22 @@ export default class MediaCard extends Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({
+      comment: event.target.value
+    });
   }
 
   // when the submit button is clicked, send the data to the back end
   // the response 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("a comment was submitted: " + this.state.value);
-    const comment = {
-      comment: this.state.value
-    }
-    //console.log(comment);
+    console.log("a comment was submitted: " + this.state.comment);
+
+    let update = this.state.comment
+    
     console.log(event.target);
     console.log(event.target.id);
-    API.addComment(event.target.id, comment)
+    API.addComment(event.target.id, update)
     .then(res => console.log(res.data))
     .catch(err => console.log(err));
     
@@ -122,7 +121,7 @@ export default class MediaCard extends Component {
         </div>
         
         <form className="comment-form" id={this.props.mongoid} onSubmit={this.handleSubmit}>
-          <input className="comment" value={this.state.comment} onChange={this.handleChange} placeholder="comment"></input> 
+          <input className="comment" value={this.state.comment} onChange={this.handleChange}></input> 
           <input type="submit" value="submit" />
         </form>
       </div>

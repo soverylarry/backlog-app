@@ -14,12 +14,12 @@ export default {
   addComment: function(id, query) {
     console.log("id: " + id);
     console.log("query: " + query.comment);
-    return axios.post(envemu.apiurl + "/api/comment/" + id, { params: query })
+    return axios.put(envemu.apiurl + "/api/comment/" + id + "/" + query);
   },
 
   updateMedia: function(id, query) {
     console.log("QUERY IS: " + query);
-    return axios.put(envemu.apiurl + "/api/submit/" + id, { params: query })
+    return axios.put(envemu.apiurl + "/api/submit/" + id + "/" + query);
   },
 
   deleteMedia: function(id) {
