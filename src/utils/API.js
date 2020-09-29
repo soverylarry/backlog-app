@@ -11,8 +11,8 @@ export default {
     return axios.post(envemu.apiurl + "/api/submit", { params: query })
   },
 
-  addComment: function(query) {
-    return axios.post(envemu.apiurl + "/api/comment", { params: query })
+  addComment: function(id, query) {
+    return axios.post(envemu.apiurl + "/api/comment/" + id, { params: query })
   },
 
   updateMedia: function(id, query) {
