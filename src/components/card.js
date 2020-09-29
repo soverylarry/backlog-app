@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBook, faFilm, faGamepad, faMusic, faTv } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import API from "../utils/API"
+import axios from "axios"
 
 
 
@@ -12,15 +13,20 @@ export default class MediaCard extends Component {
     super()
     // works as expected, returns an object from the db
     console.log(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   state = {
-    status: ""
+    status: "",
+    comment: ""
   }
 
   componentDidMount() {
     this.setState({
-      status: this.props.status
+      status: this.props.status,
+      comment: this.props.comment
     })
   }
 
@@ -39,6 +45,18 @@ export default class MediaCard extends Component {
     this.setState({
       status: event.target.value
     })
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  // when the submit button is clicked, send the data to the back end
+  // the response 
+  handleSubmit(event) {
+    console.log("a comment was submitted: " + this.state.value);
+    axios.post(envemu + "api/submit")
+    event.preventDefault();
   }
 
   render() {
@@ -64,6 +82,8 @@ export default class MediaCard extends Component {
     // for 9/28/20 test: hard code fontawesome icon names to see if they're valid
     media_type = icons[this.props.type]
     console.log(media_type);
+
+
 
     return (
       <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
@@ -93,7 +113,10 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
-        {/* <input className="comment" placeholder="comment"></input> */}
+        <form onSubmit={this.handleSubmit}>
+          <input className="comment" value={this.state.value} onChange={this.handleChange} placeholder="comment"></input> 
+          <input type="submit" value="submit" />
+        </form>
       </div>
     )
   }

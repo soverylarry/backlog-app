@@ -11,12 +11,17 @@ export default {
     return axios.post(envemu.apiurl + "/api/submit", { params: query })
   },
 
+  addComment: function(query) {
+    return axios.post(envemu.apiurl + "/api/comment", { params: query })
+  },
+
   updateMedia: function(id, query) {
     console.log("QUERY IS: " + query);
     return axios.put(envemu.apiurl + "/api/submit/" + id, { params: query })
   },
 
   deleteMedia: function(id) {
+    console.log("DELETING ID: " + id);
     return axios.delete(envemu.apiurl + "/api/submit/" + id)
   }
 };

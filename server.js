@@ -34,12 +34,14 @@ app.get("/api", cors(), (req, res) => {
 });
 
 app.put("/api/submit/:id", cors(), (req, res) => {
-  console.log(req.body);
   db.Media.update({
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      status: req.body.params.status,
+      title: req.params.body.title,
+      status: req.params.body.status,
+      type: req.params.body.type,
+      date: req.params.body.date 
     }
   }).then(dbMedia => {
     res.send(dbMedia);
@@ -49,6 +51,20 @@ app.put("/api/submit/:id", cors(), (req, res) => {
   });
 });
 
+app.put("/api/comment/:id", cors(), (req, res) => {
+  db.Media.update({
+    _id: mongojs.ObjectId(req.params.id)
+  }, {
+    $set: {
+      comment: req.body.params.comment 
+    }
+  }).then(dbMedia => {
+    res.send(dbMedia);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
 
 app.post("/api/submit", cors(), (req, res) => {
   db.Media.create({
@@ -65,7 +81,18 @@ app.post("/api/submit", cors(), (req, res) => {
     });
 });
 
-
+app.delete("/api/submit/:id", cors(), (req, res) => {
+  console.log(req.params.id);
+  db.Media.remove({
+     _id: mongojs.ObjectId(req.params.id)
+   })
+    .then(dbMedia => {
+      res.send(dbMedia);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 // Send every other request to the React app
 // Define any API routes before this runs
