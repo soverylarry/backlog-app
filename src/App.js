@@ -67,12 +67,12 @@ class App extends React.Component {
             </Navigation>
           </Drawer>
           <Content>
-            <SortButton text={"Filter by type: Books"} onClick={() => this.filterType(this.state.mediaList, "book")} />
-            <SortButton text={"Filter by type: Movies"} onClick={() => this.filterType(this.state.mediaList, "movie")} />
-            <SortButton text={"Filter by type: Games"} onClick={() => this.filterType(this.state.mediaList, "game")} />
-            <SortButton text={"Filter by type: Shows"} onClick={() => this.filterType(this.state.mediaList, "show")} />
-            <SortButton text={"Filter by type: Albums"} onClick={() => this.filterType(this.state.mediaList, "album")} />
-            <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.mediaList, "none")} />
+            <SortButton text={"Filter by type: Books"} onClick={() => this.filterType(this.state.initialList, "book")} />
+            <SortButton text={"Filter by type: Movies"} onClick={() => this.filterType(this.state.initialList, "movie")} />
+            <SortButton text={"Filter by type: Games"} onClick={() => this.filterType(this.state.initialList, "game")} />
+            <SortButton text={"Filter by type: Shows"} onClick={() => this.filterType(this.state.initialList, "show")} />
+            <SortButton text={"Filter by type: Albums"} onClick={() => this.filterType(this.state.initialList, "album")} />
+            <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.initialList, "none")} />
             <CreateNewMedia mainApp={this} />
             <div className="medialist-map">
             {this.state.mediaList.map(media => (

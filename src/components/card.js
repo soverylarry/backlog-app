@@ -6,9 +6,6 @@ import { fab } from "@fortawesome/free-brands-svg-icons"
 import API from "../utils/API"
 import { Button } from "react-mdl"
 
-
-
-
 export default class MediaCard extends Component {
   constructor(props) {
     super()
@@ -65,11 +62,19 @@ export default class MediaCard extends Component {
     API.addComment(event.target.id, update)
     .then(res => console.log(res.data))
     .catch(err => console.log(err));
-    
 
     this.setState({
       comment: event.target.value
     })
+  }
+
+  deleteClick(event) {
+    let id = event.target.id
+    console.log(id);
+    API.deleteMedia(event.target.id)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+    window.location.reload();
   }
 
   render() {
@@ -94,7 +99,7 @@ export default class MediaCard extends Component {
 
     return (
       <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
-          <Button className="delete-button" id={this.props.mongoid}raised accent ripple>x</Button>
+          <button className="delete-button" id={this.props.mongoid} onClick={this.deleteClick} raised accent ripple>x</button>
         <div className="title-div">
           <a>{this.props.title}</a>
         </div>
