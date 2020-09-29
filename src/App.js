@@ -74,9 +74,11 @@ class App extends React.Component {
             <SortButton text={"Filter by type: Albums"} onClick={() => this.filterType(this.state.mediaList, "album")} />
             <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.mediaList, "none")} />
             <CreateNewMedia mainApp={this} />
+            <div className="medialist-map">
             {this.state.mediaList.map(media => (
               <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} />
             ))}
+            </div>
           </Content>
         </Layout>
       </div>
