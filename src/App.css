@@ -73,15 +73,6 @@
   text-decoration:underline;
 }
 
-.status-div {
-  border-style: solid;
-  border-color: black;
-}
-
-.type-div {
-  border-style: solid;
-  border-color: cyan;
-}
 
 * {
   font-family: "Saira Semi Condensed", sans-serif;
@@ -187,4 +178,11 @@ input.comment{
 
 .medialist-map {
   margin-top: 1.5em;
+}
+
+.delete-button {
+  float: right;
+  width: 20px;
+  border-radius: 100px;
+  margin-top: -120px;
 }

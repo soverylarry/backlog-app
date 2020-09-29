@@ -52,7 +52,7 @@ class App extends React.Component {
     return (
       <div className="demo-big-content">
         <Layout>
-          <Header title="Sample Title" className="header" scroll>
+          <Header title="Nightstand" className="header" scroll>
             <Navigation>
               <Link to="/">Home</Link>
               <Link to="/movies">Movies</Link>

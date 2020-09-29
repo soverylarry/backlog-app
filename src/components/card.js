@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBook, faFilm, faGamepad, faMusic, faTv } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import API from "../utils/API"
+import { Button } from "react-mdl"
 
 
 
@@ -93,6 +94,7 @@ export default class MediaCard extends Component {
 
     return (
       <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
+          <Button className="delete-button" id={this.props.mongoid}raised accent ripple>x</Button>
         <div className="title-div">
           <a>{this.props.title}</a>
         </div>
