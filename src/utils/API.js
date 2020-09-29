@@ -13,5 +13,9 @@ export default {
 
   updateMedia: function(id, query) {
     return axios.put(envemu.apiurl + "/api/submit/" + id, { params: query })
+  },
+
+  deleteMedia: function(id) {
+    return axios.delete(envemu.apiurl + "/api/submit/" + id)
   }
 };
