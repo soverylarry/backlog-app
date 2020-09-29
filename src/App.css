@@ -168,6 +168,9 @@ input.comment{
     width: 100%;
   }
 }
-
+.fa-5x{
+  float: right;
+  margin: 3%;
+}
 .newmedia{}
 /* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
