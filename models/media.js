@@ -6,7 +6,7 @@ const mediaSchema = new Schema({
   type: { type: String, required: true },
   status: { type: String, required: true },
   date: { type: Date, default: new Date(Date.now())}, 
-  comment: { type: String, required: false, default: ""}
+  comment: { type: String, default: "Comment about your progress here"}
 });
 
 const Media = mongoose.model("Media", mediaSchema);
