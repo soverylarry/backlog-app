@@ -52,11 +52,13 @@ app.put("/api/submit/:id", cors(), (req, res) => {
 });
 
 app.put("/api/comment/:id", cors(), (req, res) => {
+  console.log("the req.params.id " + req.params.id);
+  console.log("the req.params.body.comment " + req.params.body.comment);
   db.Media.update({
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      comment: req.body.params.comment 
+      comment: req.params.body.comment 
     }
   }).then(dbMedia => {
     res.send(dbMedia);

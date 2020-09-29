@@ -12,6 +12,8 @@ export default {
   },
 
   addComment: function(id, query) {
+    console.log("id: " + id);
+    console.log("query: " + query.comment);
     return axios.post(envemu.apiurl + "/api/comment/" + id, { params: query })
   },
 
