@@ -93,7 +93,7 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
-        {/* <input className="comment" placeholder="comment"></input> */}
+        <input className="comment" placeholder="comment"></input>
       </div>
     )
   }
