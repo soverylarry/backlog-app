@@ -71,7 +71,7 @@ class App extends React.Component {
                 <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.mediaList, "none")} />
                 <CreateNewMedia mainApp={this} />
                 {this.state.mediaList.map(media => (
-                  <MediaCard title={media.title} status={media.status} type={media.type} date={media.date} />
+                  <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} />
                 ))}
               </Content>
             </Layout>

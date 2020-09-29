@@ -12,6 +12,7 @@ export default {
   },
 
   updateMedia: function(id, query) {
+    console.log("QUERY IS: " + query);
     return axios.put(envemu.apiurl + "/api/submit/" + id, { params: query })
   },
 

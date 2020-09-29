@@ -34,14 +34,12 @@ app.get("/api", cors(), (req, res) => {
 });
 
 app.put("/api/submit/:id", cors(), (req, res) => {
+  console.log(req.body);
   db.Media.update({
     _id: mongojs.ObjectId(req.params.id)
   }, {
     $set: {
-      title: req.params.body.title,
-      status: req.params.body.status,
-      type: req.params.body.type,
-      date: req.params.body.date 
+      status: req.body.params.status,
     }
   }).then(dbMedia => {
     res.send(dbMedia);
