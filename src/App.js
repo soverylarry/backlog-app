@@ -20,7 +20,7 @@ class App extends React.Component {
 
   componentDidMount() {
     API.getFullMediaList()
-      .then(res => this.setState({mediaList: res.data, initialList: res.data}))
+      .then(res => this.setState({ mediaList: res.data, initialList: res.data }))
       .catch(err => console.log(err));
   };
 
@@ -32,17 +32,17 @@ class App extends React.Component {
 
   filterType = (array, filter) => {
     let filtered = []
-    
-    for (let x=0; x < array.length; x++) {
+
+    for (let x = 0; x < array.length; x++) {
       if (filter === "none") {
         filtered = this.state.initialList;
       }
-      
+
       else if (array[x].type.includes(filter)) {
         filtered.push(array[x]);
       }
     }
-    
+
     this.setState({
       mediaList: filtered
     })
@@ -51,30 +51,34 @@ class App extends React.Component {
   render() {
     return (
       <div className="demo-big-content">
-            <Layout>
-              <Header title="Sample Title" className= "header" scroll>
-                <Navigation>
-                  <Link to="/">Home</Link>
-                  <Link to="/movies">Movies</Link>
-                  <Link to="/books">Books</Link>
-                </Navigation>
-              </Header>
-              <Drawer title="Title">
-                <Navigation>
-                  <Link to="/">Home</Link>
-                  <Link to="/movies">Movies</Link>
-                  <Link to="/books">Books</Link>
-                </Navigation>
-              </Drawer>
-              <Content>
-                <SortButton text={"Filter by type: Books"} onClick={() => this.filterType(this.state.mediaList, "book")} />
-                <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.mediaList, "none")} />
-                <CreateNewMedia mainApp={this} />
-                {this.state.mediaList.map(media => (
-                  <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} />
-                ))}
-              </Content>
-            </Layout>
+        <Layout>
+          <Header title="Sample Title" className="header" scroll>
+            <Navigation>
+              <Link to="/">Home</Link>
+              <Link to="/movies">Movies</Link>
+              <Link to="/books">Books</Link>
+            </Navigation>
+          </Header>
+          <Drawer title="Title">
+            <Navigation>
+              <Link to="/">Home</Link>
+              <Link to="/movies">Movies</Link>
+              <Link to="/books">Books</Link>
+            </Navigation>
+          </Drawer>
+          <Content>
+            <SortButton text={"Filter by type: Books"} onClick={() => this.filterType(this.state.mediaList, "book")} />
+            <SortButton text={"Filter by type: Movies"} onClick={() => this.filterType(this.state.mediaList, "movie")} />
+            <SortButton text={"Filter by type: Games"} onClick={() => this.filterType(this.state.mediaList, "game")} />
+            <SortButton text={"Filter by type: Shows"} onClick={() => this.filterType(this.state.mediaList, "show")} />
+            <SortButton text={"Filter by type: Albums"} onClick={() => this.filterType(this.state.mediaList, "album")} />
+            <SortButton text={"Clear filters"} onClick={() => this.filterType(this.state.mediaList, "none")} />
+            <CreateNewMedia mainApp={this} />
+            {this.state.mediaList.map(media => (
+              <MediaCard mongoid={media._id} title={media.title} status={media.status} type={media.type} date={media.date} />
+            ))}
+          </Content>
+        </Layout>
       </div>
     )
   }
