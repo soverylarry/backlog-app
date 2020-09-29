@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBook, faFilm, faGamepad, faMusic, faTv } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import API from "../utils/API"
-import axios from "axios"
+
 
 
 
@@ -54,9 +54,18 @@ export default class MediaCard extends Component {
   // when the submit button is clicked, send the data to the back end
   // the response 
   handleSubmit(event) {
-    console.log("a comment was submitted: " + this.state.value);
-    axios.post(envemu + "api/submit")
     event.preventDefault();
+    console.log("a comment was submitted: " + this.state.value);
+    const comment = {
+      comment: event.target.value
+    }
+    API.addComment(event.target.id, comment)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+
+    this.setState({
+      comment: event.target.value
+    })
   }
 
   render() {
@@ -113,8 +122,9 @@ export default class MediaCard extends Component {
         <div className="date-div">
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <input className="comment" value={this.state.value} onChange={this.handleChange} placeholder="comment"></input> 
+        
+        <form id={this.props.id} onSubmit={this.handleSubmit}>
+          <input className="comment" value={this.state.comment} onChange={this.handleChange} placeholder="comment"></input> 
           <input type="submit" value="submit" />
         </form>
       </div>
