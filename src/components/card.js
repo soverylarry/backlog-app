@@ -57,11 +57,15 @@ export default class MediaCard extends Component {
     event.preventDefault();
     console.log("a comment was submitted: " + this.state.value);
     const comment = {
-      comment: event.target.value
+      comment: this.state.value
     }
+    //console.log(comment);
+    console.log(event.target);
+    console.log(event.target.id);
     API.addComment(event.target.id, comment)
     .then(res => console.log(res.data))
     .catch(err => console.log(err));
+    
 
     this.setState({
       comment: event.target.value
@@ -78,11 +82,7 @@ export default class MediaCard extends Component {
       "game": faGamepad
     }
 
-    // works as expected, returning types of media 
-    console.log(this.props.type);
-
     let media_type = null;
-    console.log(media_type);
 
     // checks type on prop against icons object, media_type set equal to key with matching value
     // *ignore now see subsequent comment* media_type currently coming back as undefined !!!!!!!!!! work here !!!!!!!!!
@@ -90,9 +90,7 @@ export default class MediaCard extends Component {
     // i don't think it's expecting what is being passed in
     // for 9/28/20 test: hard code fontawesome icon names to see if they're valid
     media_type = icons[this.props.type]
-    console.log(media_type);
-
-
+    
 
     return (
       <div className="media-cards" id={this.props.mongoid} style={{ width: "50%" }}>
@@ -123,7 +121,7 @@ export default class MediaCard extends Component {
           <p>Date: {<Moment format="YYYY/MM/DD"></Moment>}</p>
         </div>
         
-        <form id={this.props.id} onSubmit={this.handleSubmit}>
+        <form className="comment-form" id={this.props.mongoid} onSubmit={this.handleSubmit}>
           <input className="comment" value={this.state.comment} onChange={this.handleChange} placeholder="comment"></input> 
           <input type="submit" value="submit" />
         </form>

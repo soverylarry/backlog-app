@@ -49,6 +49,7 @@
   margin-bottom:10px;
   padding: 12px; 
   float: right;
+  justify-content: center;
   
   box-shadow: 0 0 5px rgba(0, 0, 0, .30);   
 }
@@ -92,13 +93,12 @@ body {
 }
 
 form {
-flex-direction: row;
-  width: 400px;
-  display: flex;
+  flex-direction: row;
+  width: 25%;
   flex-flow: column wrap;
   float: left;
-  position: fixed;
   margin-left: 1%;
+  position: fixed;
 }
 
 form div, form label, form input, form select, form textarea {
@@ -174,3 +174,17 @@ input.comment{
 }
 .newmedia{}
 /* try flex-direction: column, justify-content: center, and align-items: center on project-cards*/
+
+.comment-form {
+  justify-content: center;
+  width: 50%;
+  position: absolute;
+}
+
+.comment-form input {
+  width: 60%;
+}
+
+.medialist-map {
+  margin-top: 1.5em;
+}
